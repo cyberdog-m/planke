@@ -1,8 +1,85 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import { RouterLink } from "vue-router";
+import { vOnClickOutside } from "@vueuse/components";
+
+const toggleNav = ref(false);
+function closeNav() {
+  toggleNav.value = false;
+}
+</script>
 
 <template>
-  <nav>
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/about">Assssbout</RouterLink>
+  <nav
+    class="fixed top-0 z-0 w-full mx-auto text-white bg-secondary/70 backdrop-blur"
+  >
+    <div
+      class="flex items-center justify-between max-w-4xl px-4 mx-auto shadow-sm h-14"
+    >
+      <RouterLink to="/">
+        <img
+          src="../assets/union_logo_w-text.png"
+          alt="College Union Logo"
+          class="h-7"
+      /></RouterLink>
+      <!-- Hamburger Menu -->
+      <div class="relative">
+        <button
+          type="button"
+          class="flex items-center justify-center w-8 h-8 ml-3 text-gray-500 rounded-md"
+          @click="toggleNav = true"
+        >
+          <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+        <div
+          v-show="toggleNav"
+          v-on-click-outside="closeNav"
+          class="absolute mt-2 right-0 z-50 p-3 w-[12rem] bg-secondary outline outline-2 outline-sechover backdrop-blur-md rounded-md"
+        >
+          <ul>
+            <li class="flex flex-col items-center w-full px-2 pt-1 my-1">
+              <img
+                src="https://api.dicebear.com/5.x/bottts/svg?seed=John Doe"
+                alt="Profile image"
+                class="w-10 h-10 p-1 rounded-full outline outline-2 bg-accent/20 outline-accent/50"
+              />
+              <div class="my-1 text-lg font-medium text-accent">John Doe</div>
+              <div class="w-full h-[0.1rem] bg-gray-700 my-1"></div>
+            </li>
+            <li
+              class="w-full px-2 py-1 my-1 transition-colors duration-100 ease-in-out rounded-md hover:bg-sechover"
+            >
+              Venue Details
+            </li>
+            <li
+              class="w-full px-2 py-1 my-1 transition-colors duration-100 ease-in-out rounded-md hover:bg-sechover"
+            >
+              About
+            </li>
+            <li
+              class="w-full px-2 py-1 my-1 transition-colors duration-100 ease-in-out rounded-md hover:bg-sechover"
+            >
+              Update Event
+            </li>
+            <li
+              class="w-full px-2 py-1 my-1 transition-colors duration-100 ease-in-out rounded-md hover:bg-sechover"
+            >
+              Admin Panel
+            </li>
+            <li
+              class="w-full px-2 py-1 my-1 transition-colors duration-100 ease-in-out rounded-md hover:bg-sechover"
+            >
+              Logout
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </nav>
 </template>
