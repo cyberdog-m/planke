@@ -8,5 +8,15 @@ import NavBar from "./components/NavBar.vue";
     <NavBar />
   </header>
 
-  <RouterView />
+  <div class="h-screen px-2 bg-primary">
+    <RouterView class="max-w-4xl mx-auto pt-14" />
+  </div>
 </template>
+
+<style>
+@import url("https://api.fontshare.com/v2/css?f[]=clash-display@200,400,700,500,600,300&display=swap");
+
+body {
+  font-family: "Clash Display", sans-serif;
+}
+</style>
