@@ -1,7 +1,10 @@
 <script setup></script>
 
 <template>
-  <div>
-    <h1>Hello World</h1>
+  <div class="w-full">
+    <h1 class="flex flex-col items-center mt-5 text-xl text-white">
+      Arts, Sports & Games
+      <span class="text-5xl font-medium">Scoreboard</span>
+    </h1>
   </div>
 </template>
