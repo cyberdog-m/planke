@@ -9,7 +9,7 @@ import NavBar from "./components/NavBar.vue";
   </header>
 
   <div class="h-screen px-2 bg-primary">
-    <RouterView class="max-w-4xl mx-auto pt-14" />
+    <RouterView class="max-w-md mx-auto pt-14" />
   </div>
 </template>
 
