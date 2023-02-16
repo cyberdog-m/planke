@@ -1,4 +1,5 @@
 <script setup>
+import PointsChart from "../components/PointsChart.vue";
 import EventDetails from "../components/EventDetails.vue";
 // Placeholder values
 const contests = [
@@ -46,7 +47,7 @@ const contests = [
     </h1>
     <h2 class="mt-10 text-4xl font-medium">Overall Ranking</h2>
     <!-- Chart Componenet -->
-    <div class="w-full h-[20rem] mt-3 rounded-xl bg-secondary"></div>
+    <PointsChart class="mt-3" />
     <h2 class="mt-10 text-4xl font-medium">Event Updates</h2>
     <EventDetails
       v-for="contest in contests"
