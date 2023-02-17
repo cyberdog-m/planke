@@ -19,6 +19,11 @@ const router = createRouter({
       name: "update",
       component: () => import("../views/UpdateContestView.vue"),
     },
+    {
+      path: "/events-list",
+      name: "events-list",
+      component: () => import("../views/EventsListView.vue"),
+    },
   ],
 });
 

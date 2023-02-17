@@ -1,0 +1,76 @@
+<script setup>
+import { ref } from "vue";
+
+// 0 -> All, 1 -> Arts, 2 -> Sports, 3 -> Games
+const filterChip = ref(0);
+</script>
+
+<template>
+  <div class="w-full text-white">
+    <h1 class="mt-10 text-4xl font-medium text-center">Events List</h1>
+    <h2 class="mt-8 text-xl font-medium">Search Event</h2>
+    <input
+      type="text"
+      placeholder="Enter Event Name"
+      class="w-full h-10 px-3 mt-2 rounded-md outline outline-1 outline-accent bg-secondary"
+    />
+    <!-- Filter Chips -->
+    <div class="flex items-center justify-start gap-3 mt-5">
+      <div
+        class="px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
+        :class="{ 'bg-accent/50': filterChip == 0 }"
+        @click="filterChip = 0"
+      >
+        All
+      </div>
+      <div
+        class="px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
+        :class="{ 'bg-accent/50': filterChip == 1 }"
+        @click="filterChip = 1"
+      >
+        Arts
+      </div>
+      <div
+        class="px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
+        :class="{ 'bg-accent/50': filterChip == 2 }"
+        @click="filterChip = 2"
+      >
+        Sports
+      </div>
+      <div
+        class="px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
+        :class="{ 'bg-accent/50': filterChip == 3 }"
+        @click="filterChip = 3"
+      >
+        Games
+      </div>
+    </div>
+    <!-- Card -->
+    <div class="flex flex-col w-full gap-3 mt-4">
+      <div
+        class="flex items-center justify-between w-full p-3 duration-200 cursor-pointer rounded-xl bg-secondary hover:bg-sechover"
+      >
+        <h3 class="">Classical Dance</h3>
+        <div class="w-2 h-2 font-medium rounded-full bg-emerald-400"></div>
+      </div>
+      <div
+        class="flex items-center justify-between w-full p-3 duration-200 cursor-pointer rounded-xl bg-secondary hover:bg-sechover"
+      >
+        <h3 class="">Speech Malayalam</h3>
+        <div class="w-2 h-2 font-medium rounded-full bg-rose-400"></div>
+      </div>
+      <div
+        class="flex items-center justify-between w-full p-3 duration-200 cursor-pointer rounded-xl bg-secondary hover:bg-sechover"
+      >
+        <h3 class="">4X100M Relay</h3>
+        <div class="w-2 h-2 font-medium rounded-full bg-emerald-400"></div>
+      </div>
+      <div
+        class="flex items-center justify-between w-full p-3 duration-200 cursor-pointer rounded-xl bg-secondary hover:bg-sechover"
+      >
+        <h3 class="">Volleyball</h3>
+        <div class="w-2 h-2 font-medium rounded-full bg-emerald-400"></div>
+      </div>
+    </div>
+  </div>
+</template>
