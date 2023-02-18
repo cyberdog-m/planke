@@ -1,42 +1,9 @@
 <script setup>
 import PointsChart from "../components/PointsChart.vue";
 import EventDetails from "../components/EventDetails.vue";
-// Placeholder values
-const contests = [
-  {
-    id: 1,
-    title: "Football",
-    type: "group",
-    first_place: "CAMS",
-    first_place_grp: "cams",
-    second_place: "ELEMENT",
-    second_place_grp: "element",
-    third_place: "CUMECS",
-    third_place_grp: "cumecs",
-  },
-  {
-    id: 2,
-    title: "Light Music",
-    type: "individual",
-    first_place: "John Doe",
-    first_place_grp: "cams",
-    second_place: "Sam Becham",
-    second_place_grp: "element",
-    third_place: "Pious Jacob",
-    third_place_grp: "cumecs",
-  },
-  {
-    id: 3,
-    title: "Recitation Malayalam / English",
-    type: "individual",
-    first_place: "John Doe jacob",
-    first_place_grp: "cams",
-    second_place: "Sam Becham",
-    second_place_grp: "element",
-    third_place: "Pious Jacob",
-    third_place_grp: "cumecs",
-  },
-];
+import { useContestsStore } from "../stores/contests";
+
+const contestsStore = useContestsStore();
 </script>
 
 <template>
@@ -50,7 +17,7 @@ const contests = [
     <PointsChart class="mt-3" />
     <h2 class="mt-10 text-4xl font-medium">Event Updates</h2>
     <EventDetails
-      v-for="contest in contests"
+      v-for="contest in contestsStore.contests"
       :key="contest.id"
       :contest-detail="contest"
     />
