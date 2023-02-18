@@ -1,6 +1,6 @@
 <script setup>
 import { RouterView } from "vue-router";
-import { onMounted } from "vue";
+import { onMounted, onUnmounted } from "vue";
 import { supabase } from "./supabase";
 import { useContestsStore } from "./stores/contests";
 import NavBar from "./components/NavBar.vue";
@@ -10,6 +10,10 @@ const contestsStore = useContestsStore();
 onMounted(() => {
   contestsStore.getSupabaseData();
   subscribeSupabaseData();
+});
+
+onUnmounted(() => {
+  supabase.removeAllChannels();
 });
 
 const subscribeSupabaseData = () => {
