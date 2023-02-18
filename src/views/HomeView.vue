@@ -2,8 +2,18 @@
 import PointsChart from "../components/PointsChart.vue";
 import EventDetails from "../components/EventDetails.vue";
 import { useContestsStore } from "../stores/contests";
+import { computed } from "vue";
 
 const contestsStore = useContestsStore();
+
+// Select the completed event from the database
+function filterCompleted(contest) {
+  return contest.is_complete;
+}
+
+const completedContests = computed(() => {
+  return contestsStore.contests.filter(filterCompleted);
+});
 </script>
 
 <template>
@@ -17,7 +27,7 @@ const contestsStore = useContestsStore();
     <PointsChart class="mt-3" />
     <h2 class="mt-10 text-4xl font-medium">Event Updates</h2>
     <EventDetails
-      v-for="contest in contestsStore.contests"
+      v-for="contest in completedContests"
       :key="contest.id"
       :contest-detail="contest"
     />
