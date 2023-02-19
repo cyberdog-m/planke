@@ -80,7 +80,7 @@ const contests = computed(() => {
       </div>
     </div>
     <!-- Card -->
-    <div class="flex flex-col w-full gap-3 mt-4">
+    <div class="flex flex-col w-full gap-3 mt-4" v-auto-animate>
       <EventsEditCard
         v-for="contest in contests"
         :contest="contest"
