@@ -45,7 +45,7 @@ const overallScores = computed(() => {
     </h1>
     <h2 class="mt-10 text-4xl font-medium">Overall Ranking</h2>
     <!-- Chart Componenet -->
-    <PointsChart class="mt-3" />
+    <PointsChart :overall-scores="overallScores" class="mt-3" />
     <h2 class="mt-10 text-4xl font-medium">Event Updates</h2>
     <div class="flex flex-col gap-4 mt-5" v-auto-animate>
       <EventDetails
