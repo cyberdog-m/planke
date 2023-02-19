@@ -6,6 +6,7 @@ import EventsEditCard from "../components/EventsEditCard.vue";
 const contestsStore = useContestsStore();
 // 0 -> All, 1 -> Arts, 2 -> Sports, 3 -> Games
 const filterChip = ref(0);
+const searchFilter = ref("");
 
 function filterWithChips(contest) {
   if (filterChip.value == 0) {
@@ -19,9 +20,20 @@ function filterWithChips(contest) {
   }
 }
 
+function filterWithSearch(contest) {
+  if (searchFilter.value.trim() != "") {
+    return contest.title
+      .trim()
+      .toLowerCase()
+      .includes(searchFilter.value.trim().toLowerCase());
+  }
+  return true;
+}
+
 const contests = computed(() => {
   return contestsStore.contests
     .filter(filterWithChips)
+    .filter(filterWithSearch)
     .sort((x, y) => Number(x.is_complete) - Number(y.is_complete));
 });
 </script>
@@ -33,6 +45,7 @@ const contests = computed(() => {
     <input
       type="text"
       placeholder="Enter Event Name"
+      v-model="searchFilter"
       class="w-full h-10 px-3 mt-2 rounded-md outline outline-1 outline-accent bg-secondary"
     />
     <!-- Filter Chips -->
