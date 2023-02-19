@@ -11,8 +11,29 @@ function filterCompleted(contest) {
   return contest.is_complete;
 }
 
+// Filter the completed events and sort by last updated date
 const completedContests = computed(() => {
-  return contestsStore.contests.filter(filterCompleted);
+  return contestsStore.contests
+    .filter(filterCompleted)
+    .sort((x, y) =>
+      new Date(x.last_updated_at) > new Date(y.last_updated_at) ? -1 : 1
+    );
+});
+
+// Calculate the overall score of completed contests
+const overallScores = computed(() => {
+  let scores = {
+    cams: 0,
+    mace: 0,
+    cumecs: 0,
+    element: 0,
+  };
+  completedContests.value.forEach((contest) => {
+    scores[contest.first_place_grp] += contest.first_place_point;
+    scores[contest.second_place_grp] += contest.second_place_point;
+    scores[contest.third_place_grp] += contest.third_place_point;
+  });
+  return scores;
 });
 </script>
 
