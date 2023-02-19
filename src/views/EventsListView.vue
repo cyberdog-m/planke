@@ -1,8 +1,29 @@
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
+import { useContestsStore } from "../stores/contests";
+import EventsEditCard from "../components/EventsEditCard.vue";
 
+const contestsStore = useContestsStore();
 // 0 -> All, 1 -> Arts, 2 -> Sports, 3 -> Games
 const filterChip = ref(0);
+
+function filterWithChips(contest) {
+  if (filterChip.value == 0) {
+    return true;
+  } else if (filterChip.value == 1) {
+    return contest.category == "arts";
+  } else if (filterChip.value == 2) {
+    return contest.category == "sports";
+  } else if (filterChip.value == 3) {
+    return contest.category == "games";
+  }
+}
+
+const contests = computed(() => {
+  return contestsStore.contests
+    .filter(filterWithChips)
+    .sort((x, y) => Number(x.is_complete) - Number(y.is_complete));
+});
 </script>
 
 <template>
@@ -47,30 +68,11 @@ const filterChip = ref(0);
     </div>
     <!-- Card -->
     <div class="flex flex-col w-full gap-3 mt-4">
-      <div
-        class="flex items-center justify-between w-full p-3 duration-200 cursor-pointer rounded-xl bg-secondary hover:bg-sechover"
-      >
-        <h3 class="">Classical Dance</h3>
-        <div class="w-2 h-2 font-medium rounded-full bg-emerald-400"></div>
-      </div>
-      <div
-        class="flex items-center justify-between w-full p-3 duration-200 cursor-pointer rounded-xl bg-secondary hover:bg-sechover"
-      >
-        <h3 class="">Speech Malayalam</h3>
-        <div class="w-2 h-2 font-medium rounded-full bg-rose-400"></div>
-      </div>
-      <div
-        class="flex items-center justify-between w-full p-3 duration-200 cursor-pointer rounded-xl bg-secondary hover:bg-sechover"
-      >
-        <h3 class="">4X100M Relay</h3>
-        <div class="w-2 h-2 font-medium rounded-full bg-emerald-400"></div>
-      </div>
-      <div
-        class="flex items-center justify-between w-full p-3 duration-200 cursor-pointer rounded-xl bg-secondary hover:bg-sechover"
-      >
-        <h3 class="">Volleyball</h3>
-        <div class="w-2 h-2 font-medium rounded-full bg-emerald-400"></div>
-      </div>
+      <EventsEditCard
+        v-for="contest in contests"
+        :contest="contest"
+        :key="contest.id"
+      />
     </div>
   </div>
 </template>
