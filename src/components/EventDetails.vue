@@ -11,7 +11,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="w-full p-3 mt-4 rounded-xl bg-secondary">
+  <div class="w-full p-3 rounded-xl bg-secondary">
     <div class="flex items-center justify-between">
       <h3 class="text-2xl font-medium tracking-wide">
         {{ props.contestDetail.title }}
