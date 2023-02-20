@@ -31,19 +31,22 @@ const overallScores = computed(() => {
   completedContests.value.forEach((contest) => {
     if (
       Number.isInteger(contest.first_place_point) &&
-      contest.first_place_grp != null
+      contest.first_place_grp != null &&
+      contest.first_place_grp != ""
     ) {
       scores[contest.first_place_grp] += contest.first_place_point;
     }
     if (
       Number.isInteger(contest.second_place_point) &&
-      contest.second_place_grp != null
+      contest.second_place_grp != null &&
+      contest.second_place_grp != ""
     ) {
       scores[contest.second_place_grp] += contest.second_place_point;
     }
     if (
       Number.isInteger(contest.third_place_point) &&
-      contest.third_place_grp != null
+      contest.third_place_grp != null &&
+      contest.third_place_grp != ""
     ) {
       scores[contest.third_place_grp] += contest.third_place_point;
     }
