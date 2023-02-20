@@ -14,6 +14,7 @@ const second_place = ref("");
 const second_place_grp = ref("");
 const third_place = ref("");
 const third_place_grp = ref("");
+const is_complete = ref("true");
 
 //find the contest with the id
 const contest = computed(() => {
@@ -42,7 +43,7 @@ async function updateContest() {
         second_place_grp: second_place_grp.value,
         third_place: third_place.value,
         third_place_grp: third_place_grp.value,
-        is_complete: true,
+        is_complete: is_complete.value,
         last_updated_at: new Date().toISOString(),
       })
       .eq("id", route.params.contestId);
@@ -146,6 +147,24 @@ async function updateContest() {
           <option value="element">ELEMENT</option>
           <option value="cumecs">CUMECS</option>
         </select>
+      </div>
+      <div
+        class="flex items-center justify-center w-full p-3 mt-4 rounded-xl bg-secondary"
+      >
+        <div
+          @click="is_complete = !is_complete"
+          class="flex items-center h-8 px-1 bg-gray-700 rounded-full w-14"
+          :class="{ 'justify-end': is_complete }"
+        >
+          <div
+            class="w-6 h-6 rounded-full"
+            :class="{
+              'bg-emerald-400': is_complete,
+              'bg-rose-400': !is_complete,
+            }"
+          ></div>
+        </div>
+        <div class="ml-5"><span v-if="!is_complete">Not</span> Completed</div>
       </div>
       <button
         @click="updateContest"
