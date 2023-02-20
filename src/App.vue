@@ -4,6 +4,7 @@ import { onMounted, onUnmounted } from "vue";
 import { supabase } from "./supabase";
 import { useContestsStore } from "./stores/contests";
 import NavBar from "./components/NavBar.vue";
+import FooterBar from "./components/FooterBar.vue";
 
 const contestsStore = useContestsStore();
 
@@ -44,9 +45,13 @@ const subscribeSupabaseData = () => {
     <NavBar />
   </header>
 
-  <div class="h-full min-h-screen px-4 bg-primary">
+  <div class="h-full min-h-screen px-4 pb-14 bg-primary">
     <RouterView class="max-w-md mx-auto pt-14" />
   </div>
+
+  <footer>
+    <FooterBar />
+  </footer>
 </template>
 
 <style>

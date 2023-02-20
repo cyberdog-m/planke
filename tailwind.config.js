@@ -9,6 +9,7 @@ module.exports = {
         secondary: "#241f37",
         accent: "#896bf3",
         sechover: "#2E2944",
+        footer: "#181422",
       },
     },
   },
