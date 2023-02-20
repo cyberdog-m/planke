@@ -56,7 +56,6 @@ async function updateContest() {
 
 <template>
   <div class="w-full text-white">
-    <h1>{{ contest }}</h1>
     <h1 class="mt-10 text-4xl font-medium text-center">Update Event Details</h1>
     <h2 class="mt-8 text-2xl font-medium capitalize">{{ contest.title }}</h2>
     <!-- Update Details Card -->
