@@ -15,7 +15,7 @@ const router = createRouter({
       component: () => import("../views/AboutView.vue"),
     },
     {
-      path: "/update",
+      path: "/update/:contestId",
       name: "update",
       component: () => import("../views/UpdateContestView.vue"),
     },

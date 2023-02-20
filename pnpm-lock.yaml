@@ -20,6 +20,7 @@ specifiers:
   vite: ^4.0.0
   vue: ^3.2.45
   vue-chartjs: ^5.2.0
+  vue-material-design-icons: ^5.2.0
   vue-router: ^4.1.6
 
 dependencies:
@@ -32,6 +33,7 @@ dependencies:
   pinia: 2.0.30_vue@3.2.47
   vue: 3.2.47
   vue-chartjs: 5.2.0_chart.js@4.2.1+vue@3.2.47
+  vue-material-design-icons: 5.2.0
   vue-router: 4.1.6_vue@3.2.47
 
 devDependencies:
@@ -1895,6 +1897,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /vue-material-design-icons/5.2.0:
+    resolution: {integrity: sha512-fcdcJHQ9fQw2CAytuLAzWSELcxH138sCdMItVhvmO7Lu9afIgojB/UCWv7XHt/lURsnq/n6O+muM4AQgw8yfig==}
+    dev: false
 
   /vue-router/4.1.6_vue@3.2.47:
     resolution: {integrity: sha512-DYWYwsG6xNPmLq/FmZn8Ip+qrhFEzA14EI12MsMgVxvHFDYvlr4NXpVF5hrRH1wVcDP8fGi5F4rxuJSl8/r+EQ==}
