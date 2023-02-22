@@ -34,6 +34,11 @@ const router = createRouter({
       name: "admin",
       component: () => import("../views/AdminView.vue"),
     },
+    {
+      path: "/addevent",
+      name: "addevent",
+      component: () => import("../views/AddEventView.vue"),
+    },
   ],
 });
 
