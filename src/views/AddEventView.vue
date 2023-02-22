@@ -54,10 +54,10 @@ async function addNewEvent() {
           class="w-full h-10 px-3 mt-1 mb-2 rounded-md outline outline-1 outline-accent bg-secondary"
         >
           <option selected disabled>Select Event Category</option>
-          <option value="cams">Arts</option>
-          <option value="mace">Sports</option>
-          <option value="element">Games</option>
-          <option value="cumecs">Other</option>
+          <option value="arts">Arts</option>
+          <option value="sports">Sports</option>
+          <option value="games">Games</option>
+          <option value="other">Other</option>
         </select>
         <!-- Event Type -->
         <div class="mt-5 text-lg">Type</div>
@@ -67,8 +67,8 @@ async function addNewEvent() {
           class="w-full h-10 px-3 mt-1 mb-2 rounded-md outline outline-1 outline-accent bg-secondary"
         >
           <option selected disabled>Select Event Type</option>
-          <option value="cams">Individual</option>
-          <option value="mace">Group</option>
+          <option value="individual">Individual</option>
+          <option value="group">Group</option>
         </select>
         <!-- Points -->
         <div class="mt-5 text-lg">First Place Points</div>
