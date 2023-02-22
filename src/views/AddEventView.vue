@@ -1,13 +1,47 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { supabase } from "../supabase";
+
+const router = useRouter();
+
+const eventName = ref();
+const eventCategory = ref();
+const eventType = ref();
+const firstPlacePoint = ref();
+const secondPlacePoint = ref();
+const thirdPlacePoint = ref();
+
+async function addNewEvent() {
+  try {
+    const { error } = await supabase.from("contests").insert({
+      title: eventName.value,
+      category: eventCategory.value,
+      type: eventType.value,
+      first_place_point: firstPlacePoint.value,
+      second_place_point: secondPlacePoint.value,
+      third_place_point: thirdPlacePoint.value,
+      created_at: new Date().toISOString(),
+      last_updated_at: new Date().toISOString(),
+    });
+    router.push({ name: "admin" });
+    if (error) throw error;
+  } catch (error) {
+    console.warn(error.message);
+  }
+}
+</script>
+
 <template>
   <div class="w-full text-white">
     <h1 class="mt-10 text-4xl font-medium text-center">Add New Event</h1>
-    <form action="">
+    <form @submit.prevent="addNewEvent">
       <div class="flex flex-col px-4 py-4 mt-5 rounded-xl bg-secondary">
         <!-- Event Title -->
         <div class="text-lg">Event Name</div>
         <input
           required
+          v-model="eventName"
           placeholder="Enter the name of the event"
           class="w-full h-10 px-3 mt-1 rounded-md outline outline-accent outline-1 bg-secondary"
           type="text"
@@ -16,6 +50,7 @@
         <div class="mt-5 text-lg">Category</div>
         <select
           id="category"
+          v-model="eventCategory"
           class="w-full h-10 px-3 mt-1 mb-2 rounded-md outline outline-1 outline-accent bg-secondary"
         >
           <option selected disabled>Select Event Category</option>
@@ -27,11 +62,12 @@
         <!-- Event Type -->
         <div class="mt-5 text-lg">Type</div>
         <select
-          id="category"
+          id="type"
+          v-model="eventType"
           class="w-full h-10 px-3 mt-1 mb-2 rounded-md outline outline-1 outline-accent bg-secondary"
         >
           <option selected disabled>Select Event Type</option>
-          <option value="cams">Individula</option>
+          <option value="cams">Individual</option>
           <option value="mace">Group</option>
         </select>
         <!-- Points -->
@@ -40,6 +76,7 @@
           required
           type="number"
           inputmode="numeric"
+          v-model="firstPlacePoint"
           class="w-full h-10 px-3 mt-1 rounded-md outline outline-accent outline-1 bg-secondary"
         />
         <div class="mt-5 text-lg">Second Place Points</div>
@@ -47,6 +84,7 @@
           required
           type="number"
           inputmode="numeric"
+          v-model="secondPlacePoint"
           class="w-full h-10 px-3 mt-1 rounded-md outline outline-accent outline-1 bg-secondary"
         />
         <div class="mt-5 text-lg">Third Place Points</div>
@@ -54,11 +92,13 @@
           required
           type="number"
           inputmode="numeric"
+          v-model="thirdPlacePoint"
           class="w-full h-10 px-3 mt-1 mb-5 rounded-md outline outline-accent outline-1 bg-secondary"
         />
       </div>
       <div class="flex justify-center">
         <button
+          type="submit"
           class="px-10 w-[12rem] mx-auto mt-5 rounded-xl text-lg font-medium text-primary py-3 bg-accent hover:bg-accent/90"
         >
           Submit
