@@ -1,0 +1,53 @@
+<script setup>
+import { ref } from "vue";
+
+const emailId = ref();
+const password = ref();
+const fullName = ref();
+
+function signUpUser() {
+  console.log("Signing up user");
+}
+</script>
+
+<template>
+  <div class="w-full text-white">
+    <h1 class="mt-10 text-4xl font-medium text-center">Sign Up</h1>
+    <form @submit.prevent="signUpUser">
+      <div class="flex flex-col px-4 py-4 mt-5 rounded-xl bg-secondary">
+        <div class="text-lg">Email Id</div>
+        <input
+          required
+          v-model="emailId"
+          placeholder="Enter email address"
+          class="w-full h-10 px-3 mt-1 rounded-md outline outline-accent outline-1 bg-secondary"
+          type="text"
+        />
+        <div class="mt-5 text-lg">Full Name</div>
+        <input
+          required
+          v-model="fullName"
+          placeholder="Enter the full name"
+          class="w-full h-10 px-3 mt-1 rounded-md outline outline-accent outline-1 bg-secondary"
+          type="text"
+        />
+        <div class="mt-5 text-lg">Password</div>
+        <input
+          required
+          v-model="password"
+          placeholder="Enter the password"
+          class="w-full h-10 px-3 mt-1 mb-4 rounded-md outline outline-accent outline-1 bg-secondary"
+          type="password"
+        />
+      </div>
+      <div class="flex justify-center">
+        <button
+          type="submit"
+          class="px-10 w-[12rem] mt-5 rounded-xl text-lg font-medium text-primary py-3 bg-accent hover:bg-accent/90"
+        >
+          Sign Up
+        </button>
+      </div>
+    </form>
+  </div>
+</template>
