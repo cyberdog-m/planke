@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { supabase } from "../supabase";
 import { useUserStore } from "../stores/user";
+import AlertOutlineIcon from "vue-material-design-icons/AlertOutline.vue";
 
 const router = useRouter();
 const userStore = useUserStore();
@@ -10,6 +11,8 @@ const userStore = useUserStore();
 const emailId = ref();
 const password = ref();
 const fullName = ref();
+
+const errorMsg = ref();
 
 async function signUpUser() {
   try {
@@ -23,10 +26,11 @@ async function signUpUser() {
       },
     });
     userStore.user = data.user;
-    router.push({ name: "admin" });
     if (error) throw error;
+    router.push({ name: "admin" });
   } catch (error) {
     console.warn(error.message);
+    errorMsg.value = error.message;
   }
 }
 </script>
@@ -35,7 +39,10 @@ async function signUpUser() {
   <div class="w-full text-white">
     <h1 class="mt-10 text-4xl font-medium text-center">Sign Up</h1>
     <form @submit.prevent="signUpUser">
-      <div class="flex flex-col px-4 py-4 mt-5 rounded-xl bg-secondary">
+      <div
+        class="flex flex-col px-4 py-4 mt-5 rounded-xl bg-secondary"
+        v-auto-animate
+      >
         <div class="text-lg">Email Id</div>
         <input
           required
@@ -60,6 +67,13 @@ async function signUpUser() {
           class="w-full h-10 px-3 mt-1 mb-4 rounded-md outline outline-accent outline-1 bg-secondary"
           type="password"
         />
+        <div
+          v-if="errorMsg"
+          class="flex items-center w-full p-3 mt-2 font-medium rounded-md bg-rose-300 text-primary"
+        >
+          <AlertOutlineIcon fillColor="#1c1727" class="mr-4" />
+          {{ errorMsg }}
+        </div>
       </div>
       <div class="flex justify-center">
         <button
