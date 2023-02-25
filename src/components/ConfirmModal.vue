@@ -1,5 +1,6 @@
 <script setup>
 import { vOnClickOutside } from "@vueuse/components";
+import { supabase } from "../supabase";
 
 const props = defineProps({
   showModal: Boolean,
@@ -13,8 +14,20 @@ function closeModal() {
 }
 
 function deleteEvent() {
-  console.log("Deleting Event");
   emit("closeModal");
+  removeItem(props.contest.id);
+}
+
+async function removeItem(item_id) {
+  try {
+    const { error } = await supabase
+      .from("contests")
+      .delete()
+      .eq("id", item_id);
+    if (error) throw error;
+  } catch (error) {
+    console.warn(error.message);
+  }
 }
 </script>
 <template>
