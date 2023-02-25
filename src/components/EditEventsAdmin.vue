@@ -1,6 +1,7 @@
 <script setup>
 import { useRouter } from "vue-router";
 import PencilOutlineIcon from "vue-material-design-icons/PencilOutline.vue";
+import DeleteOutlineIcon from "vue-material-design-icons/DeleteOutline.vue";
 
 const props = defineProps({
   contest: Object,
@@ -18,7 +19,7 @@ function openEditEvent() {
     class="flex items-center justify-between w-full p-3 duration-200 r rounded-xl bg-secondary hover:bg-sechover"
   >
     <h3 class="">{{ props.contest.title }}</h3>
-    <div class="flex items-center gap-5">
+    <div class="flex items-center gap-3">
       <div
         class="w-2 h-2 font-medium rounded-full"
         :class="{
@@ -30,7 +31,12 @@ function openEditEvent() {
         @click="openEditEvent"
         class="flex items-center justify-center w-10 h-10 rounded-md bg-accent"
       >
-        <PencilOutlineIcon :size="30" fillColor="#1c1727" />
+        <PencilOutlineIcon :size="27" fillColor="#1c1727" />
+      </button>
+      <button
+        class="flex items-center justify-center w-10 h-10 rounded-md bg-rose-400"
+      >
+        <DeleteOutlineIcon :size="25" fillColor="#1c1727" />
       </button>
     </div>
   </div>
