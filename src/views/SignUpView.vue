@@ -11,6 +11,7 @@ const userStore = useUserStore();
 const emailId = ref();
 const password = ref();
 const fullName = ref();
+const userRole = ref("editor");
 
 const errorMsg = ref();
 
@@ -22,6 +23,7 @@ async function signUpUser() {
       options: {
         data: {
           full_name: fullName.value,
+          user_role: userRole.value,
         },
       },
     });
@@ -59,6 +61,14 @@ async function signUpUser() {
           class="w-full h-10 px-3 mt-1 rounded-md outline outline-accent outline-1 bg-secondary"
           type="text"
         />
+        <div class="mt-5 text-lg">User Role</div>
+        <select
+          v-model="userRole"
+          class="w-full h-10 px-3 mt-1 rounded-md outline outline-accent outline-1 bg-secondary"
+        >
+          <option value="editor">Editor</option>
+          <option value="admin">Admin</option>
+        </select>
         <div class="mt-5 text-lg">Password</div>
         <input
           required

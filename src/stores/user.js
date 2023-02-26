@@ -1,4 +1,4 @@
-import { ref, computed, watch } from "vue";
+import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import { supabase } from "../supabase";
 
@@ -9,33 +9,14 @@ export const useUserStore = defineStore("user", () => {
     return user.value ? true : false;
   });
 
-  watch(user, async () => {
-    if (isAuthenticated.value) {
-      try {
-        let { data, error, status } = await supabase
-          .from("profiles")
-          .select(`full_name, is_admin`)
-          .eq("id", user.value.id)
-          .single();
-
-        if (error && status !== 406) throw error;
-
-        if (data) {
-          user.value.full_name = data.full_name;
-          user.value.is_admin = data.is_admin;
-        }
-      } catch (error) {
-        console.warn(error.message);
-      }
-    }
-  });
-
   async function getSessionData() {
     try {
       const { data, error } = await supabase.auth.getSession();
       let userData = {
         id: data.session.user.id,
         email: data.session.user.email,
+        full_name: data.session.user.user_metadata.full_name,
+        user_role: data.session.user.user_metadata.user_role,
       };
       user.value = userData;
       if (error) throw error;
