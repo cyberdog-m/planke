@@ -18,6 +18,8 @@ supabase.auth.onAuthStateChange((event, session) => {
     let userData = {
       id: session.user.id,
       email: session.user.email,
+      full_name: session.user.user_metadata.full_name,
+      user_role: session.user.user_metadata.user_role,
     };
     userStore.user = userData;
   } else if (event == "SIGNED_OUT") {

@@ -1,10 +1,12 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import { supabase } from "../supabase";
+import { useUserStore } from "../stores/user";
 import AlertOutlineIcon from "vue-material-design-icons/AlertOutline.vue";
 
 const router = useRouter();
+const userStore = useUserStore();
 
 const emailId = ref();
 const password = ref();
@@ -25,6 +27,12 @@ async function signInUser() {
     errorMsg.value = error.message;
   }
 }
+
+onMounted(() => {
+  if (userStore.isAuthenticated) {
+    router.push({ name: "events-list" });
+  }
+});
 </script>
 
 <template>
