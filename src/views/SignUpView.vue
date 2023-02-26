@@ -2,11 +2,9 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { supabase } from "../supabase";
-import { useUserStore } from "../stores/user";
 import AlertOutlineIcon from "vue-material-design-icons/AlertOutline.vue";
 
 const router = useRouter();
-const userStore = useUserStore();
 
 const emailId = ref();
 const password = ref();
@@ -17,7 +15,7 @@ const errorMsg = ref();
 
 async function signUpUser() {
   try {
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email: emailId.value,
       password: password.value,
       options: {
@@ -27,7 +25,6 @@ async function signUpUser() {
         },
       },
     });
-    userStore.user = data.user;
     if (error) throw error;
     router.push({ name: "admin" });
   } catch (error) {

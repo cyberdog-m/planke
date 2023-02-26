@@ -15,11 +15,10 @@ const errorMsg = ref();
 
 async function signInUser() {
   try {
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
       email: emailId.value,
       password: password.value,
     });
-    console.log(data);
     if (error) throw error;
     router.push({ name: "events-list" });
   } catch (error) {
