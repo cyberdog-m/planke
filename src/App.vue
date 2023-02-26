@@ -3,13 +3,25 @@ import { RouterView } from "vue-router";
 import { onMounted, onUnmounted } from "vue";
 import { supabase } from "./supabase";
 import { useContestsStore } from "./stores/contests";
+import { useUserStore } from "./stores/user";
 import NavBar from "./components/NavBar.vue";
 import FooterBar from "./components/FooterBar.vue";
 
 const contestsStore = useContestsStore();
+const userStore = useUserStore();
+
+contestsStore.getSupabaseData();
+userStore.getSessionData();
+
+supabase.auth.onAuthStateChange((event, session) => {
+  if (event == "SIGNED_IN") {
+    userStore.user = session.user;
+  } else if (event == "SIGNED_OUT") {
+    userStore.resetUser();
+  }
+});
 
 onMounted(() => {
-  contestsStore.getSupabaseData();
   subscribeSupabaseData();
 });
 
