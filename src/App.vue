@@ -15,7 +15,11 @@ userStore.getSessionData();
 
 supabase.auth.onAuthStateChange((event, session) => {
   if (event == "SIGNED_IN") {
-    userStore.user = session.user;
+    let userData = {
+      id: session.user.id,
+      email: session.user.email,
+    };
+    userStore.user = userData;
   } else if (event == "SIGNED_OUT") {
     userStore.resetUser();
   }
