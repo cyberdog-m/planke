@@ -1,12 +1,19 @@
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { RouterLink } from "vue-router";
+import { useUserStore } from "../stores/user";
 import { vOnClickOutside } from "@vueuse/components";
+
+const userStore = useUserStore();
 
 const toggleNav = ref(false);
 function closeNav() {
   toggleNav.value = false;
 }
+
+const avatarUrl = computed(() => {
+  return `https://api.dicebear.com/5.x/bottts-neutral/svg?seed=${userStore.user.id}&size=34`;
+});
 </script>
 
 <template>
@@ -43,13 +50,18 @@ function closeNav() {
           class="absolute mt-2 right-0 z-50 p-3 w-[12rem] bg-secondary outline outline-2 outline-sechover backdrop-blur-md rounded-md"
         >
           <ul>
-            <li class="flex flex-col items-center w-full px-2 pt-1 my-1">
+            <li
+              v-if="userStore.isAuthenticated"
+              class="flex flex-col items-center w-full px-2 pt-1 my-1"
+            >
               <img
-                src="https://api.dicebear.com/5.x/bottts/svg?seed=John Doe"
+                :src="avatarUrl"
                 alt="Profile image"
                 class="w-10 h-10 p-1 rounded-full outline outline-2 bg-accent/20 outline-accent/50"
               />
-              <div class="my-1 text-lg font-medium text-accent">John Doe</div>
+              <div class="my-1 text-lg font-medium text-accent">
+                {{ userStore.user.full_name }}
+              </div>
               <div class="w-full h-[0.1rem] bg-gray-700 my-1"></div>
             </li>
             <li
