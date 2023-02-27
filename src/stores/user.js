@@ -9,6 +9,13 @@ export const useUserStore = defineStore("user", () => {
     return user.value ? true : false;
   });
 
+  const isAdmin = computed(() => {
+    if (isAuthenticated.value) {
+      return user.value.user_role == "admin";
+    }
+    return false;
+  });
+
   async function getSessionData() {
     try {
       const { data, error } = await supabase.auth.getSession();
@@ -32,6 +39,7 @@ export const useUserStore = defineStore("user", () => {
   async function signOutUser() {
     try {
       const { error } = await supabase.auth.signOut();
+      window.location.reload();
       if (error) throw error;
     } catch (error) {
       console.warn(error.message);
@@ -42,6 +50,7 @@ export const useUserStore = defineStore("user", () => {
     user,
     getSessionData,
     isAuthenticated,
+    isAdmin,
     resetUser,
     signOutUser,
   };
