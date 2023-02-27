@@ -14,23 +14,35 @@ const router = createRouter({
       path: "/about",
       name: "about",
       component: () => import("../views/AboutView.vue"),
+      meta: {
+        title: "About",
+      },
     },
     {
       path: "/update/:contestId",
       name: "update",
       component: () => import("../views/UpdateContestView.vue"),
-      meta: { requiresAuth: true },
+      meta: {
+        requiresAuth: true,
+        title: "Update Event",
+      },
     },
     {
       path: "/events",
       name: "events-list",
       component: () => import("../views/EventsListView.vue"),
-      meta: { requiresAuth: true },
+      meta: {
+        requiresAuth: true,
+        title: "Events",
+      },
     },
     {
       path: "/venue",
       name: "venue",
       component: () => import("../views/VenueDetailsView.vue"),
+      meta: {
+        title: "Venue Details",
+      },
     },
     {
       path: "/admin",
@@ -39,6 +51,7 @@ const router = createRouter({
       meta: {
         requiresAuth: true,
         requiresAdmin: true,
+        title: "Admin Panel",
       },
     },
     {
@@ -48,6 +61,7 @@ const router = createRouter({
       meta: {
         requiresAuth: true,
         requiresAdmin: true,
+        title: "Add Event",
       },
     },
     {
@@ -57,6 +71,7 @@ const router = createRouter({
       meta: {
         requiresAuth: true,
         requiresAdmin: true,
+        title: "Edit Event",
       },
     },
     {
@@ -66,12 +81,16 @@ const router = createRouter({
       meta: {
         requiresAuth: true,
         requiresAdmin: true,
+        title: "Sign Up",
       },
     },
     {
       path: "/signin",
       name: "signin",
       component: () => import("../views/SignInView.vue"),
+      meta: {
+        title: "Sign In",
+      },
     },
   ],
 });
@@ -100,6 +119,14 @@ router.beforeEach((to, _, next) => {
     }
   } else {
     next();
+  }
+});
+
+router.afterEach((to) => {
+  if (to.meta.title) {
+    document.title = `${to.meta.title} | Planke`;
+  } else {
+    document.title = "Planke | The Scoreboard App";
   }
 });
 
