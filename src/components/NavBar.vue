@@ -18,7 +18,7 @@ const avatarUrl = computed(() => {
 
 <template>
   <nav
-    class="fixed top-0 z-50 w-full mx-auto text-white bg-secondary/70 backdrop-blur"
+    class="fixed top-0 z-50 w-full mx-auto text-white shadow-md shadow-primary/50 bg-secondary/70 backdrop-blur"
   >
     <div
       class="flex items-center justify-between max-w-4xl px-4 mx-auto shadow-sm h-14"
@@ -47,9 +47,9 @@ const avatarUrl = computed(() => {
         <div
           v-show="toggleNav"
           v-on-click-outside="closeNav"
-          class="absolute mt-2 right-0 z-50 p-3 w-[12rem] bg-secondary outline outline-2 outline-sechover backdrop-blur-md rounded-md"
+          class="absolute mt-2 right-0 z-50 p-3 w-[14rem] bg-secondary outline outline-2 outline-sechover backdrop-blur-md rounded-md"
         >
-          <ul>
+          <ul class="flex flex-col gap-1">
             <li
               v-if="userStore.isAuthenticated"
               class="flex flex-col items-center w-full px-2 pt-1 my-1"
@@ -65,27 +65,27 @@ const avatarUrl = computed(() => {
               <div class="w-full h-[0.1rem] bg-gray-700 my-1"></div>
             </li>
             <li
-              class="w-full px-2 py-1 my-1 transition-colors duration-100 ease-in-out rounded-md hover:bg-sechover"
+              class="w-full px-2 py-2 transition-colors duration-100 ease-in-out rounded-md hover:bg-sechover"
             >
               Venue Details
             </li>
             <li
-              class="w-full px-2 py-1 my-1 transition-colors duration-100 ease-in-out rounded-md hover:bg-sechover"
+              class="w-full px-2 py-2 transition-colors duration-100 ease-in-out rounded-md hover:bg-sechover"
             >
               About
             </li>
             <li
-              class="w-full px-2 py-1 my-1 transition-colors duration-100 ease-in-out rounded-md hover:bg-sechover"
+              class="w-full px-2 py-2 transition-colors duration-100 ease-in-out rounded-md hover:bg-sechover"
             >
               Update Event
             </li>
             <li
-              class="w-full px-2 py-1 my-1 transition-colors duration-100 ease-in-out rounded-md hover:bg-sechover"
+              class="w-full px-2 py-2 transition-colors duration-100 ease-in-out rounded-md hover:bg-sechover"
             >
               Admin Panel
             </li>
             <li
-              class="w-full px-2 py-1 my-1 transition-colors duration-100 ease-in-out rounded-md hover:bg-sechover"
+              class="w-full px-2 py-2 transition-colors duration-100 ease-in-out rounded-md hover:bg-sechover"
             >
               Logout
             </li>
