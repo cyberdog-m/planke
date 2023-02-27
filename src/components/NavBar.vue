@@ -18,7 +18,7 @@ const avatarUrl = computed(() => {
 
 <template>
   <nav
-    class="fixed top-0 z-0 w-full mx-auto text-white bg-secondary/70 backdrop-blur"
+    class="fixed top-0 z-50 w-full mx-auto text-white bg-secondary/70 backdrop-blur"
   >
     <div
       class="flex items-center justify-between max-w-4xl px-4 mx-auto shadow-sm h-14"
