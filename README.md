@@ -1,4 +1,4 @@
-<p align='center'><img height="150px" src="./resources/planke-icon.png"/></p>
+<p align='center'><img height="150px" src="https://user-images.githubusercontent.com/64730205/221781530-53105260-7999-4ba9-9f3d-bc5e5115887d.png"/></p>
 <h1 align='center'>Planke</h1>
 <p align='center'>The official scoreboard app of <a href="https://instagram.com/mcetians"><b>Union of Malabar CET</b></a></p>
 <p align='center'>
