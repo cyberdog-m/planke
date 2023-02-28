@@ -1,35 +1,15 @@
-# scoreboard-app
+<p align='center'><img height="150px" src="./resources/planke-icon.png"/></p>
+<h1 align='center'>Planke</h1>
+<p align='center'>The official scoreboard app of <a href="https://instagram.com/mcetians"><b>Union of Malabar CET</b></a></p>
+<p align='center'>
+    <img src='https://img.shields.io/badge/Vue.js-4FC08D.svg?style=for-the-badge&logo=vuedotjs&logoColor=white'/>
+    <img src='https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white' />
+    <img src='https://img.shields.io/badge/Supabase-3ECF8E.svg?style=for-the-badge&logo=Supabase&logoColor=white' />
+</p>
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-pnpm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-pnpm dev
-```
-
-### Compile and Minify for Production
-
-```sh
-pnpm build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-pnpm lint
-```
+## Features
+- :bar_chart: Displays scores of various teams.
+- :dancer: Displays winner details of each event.
+- :heavy_plus_sign: Add or delete events.
+- :recycle: Update winner details.
+- :man: User authentication and authorization
