@@ -84,10 +84,10 @@ async function updateContest() {
           class="w-full h-10 px-3 mt-1 mb-2 rounded-md outline outline-1 outline-accent bg-secondary"
         >
           <option selected disabled>Select an Association</option>
-          <option value="cams">CAMS</option>
+          <option value="scam">SCAM</option>
           <option value="mace">MACE</option>
           <option value="element">ELEMENT</option>
-          <option value="cumecs">CUMECS</option>
+          <option value="">None</option>
         </select>
       </div>
       <!-- Second Place Card -->
@@ -113,10 +113,10 @@ async function updateContest() {
           class="w-full h-10 px-3 mt-1 mb-2 rounded-md outline outline-1 outline-accent bg-secondary"
         >
           <option selected disabled>Select an Association</option>
-          <option value="cams">CAMS</option>
+          <option value="scam">SCAM</option>
           <option value="mace">MACE</option>
           <option value="element">ELEMENT</option>
-          <option value="cumecs">CUMECS</option>
+          <option value="">None</option>
         </select>
       </div>
       <!-- Third Place Card -->
@@ -142,10 +142,10 @@ async function updateContest() {
           class="w-full h-10 px-3 mt-1 mb-2 rounded-md outline outline-1 outline-accent bg-secondary"
         >
           <option selected disabled>Select an Association</option>
-          <option value="cams">CAMS</option>
+          <option value="scam">SCAM</option>
           <option value="mace">MACE</option>
           <option value="element">ELEMENT</option>
-          <option value="cumecs">CUMECS</option>
+          <option value="">None</option>
         </select>
       </div>
       <div

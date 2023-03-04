@@ -23,9 +23,8 @@ const completedContests = computed(() => {
 // Calculate the overall score of completed contests
 const overallScores = computed(() => {
   let scores = {
-    cams: 0,
+    scam: 0,
     mace: 0,
-    cumecs: 0,
     element: 0,
   };
   completedContests.value.forEach((contest) => {
