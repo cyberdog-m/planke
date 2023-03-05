@@ -41,6 +41,11 @@ const chartOptions = {
     "rgb(71, 229, 239)",
     "rgb(248, 140, 94)",
   ],
+  layout: {
+    padding: {
+      top: 40,
+    },
+  },
   plugins: {
     legend: {
       display: false,
@@ -58,16 +63,16 @@ const chartOptions = {
       },
     },
     datalabels: {
-      color: "#1c1727",
+      color: "#ffffff",
       textStrokeColor: "rgba(255, 255, 255, 0)",
       textStrokeWidth: 6,
       font: {
         family: "Clash Display",
-        weight: 600,
+        weight: 500,
         size: 25,
       },
-      anchor: "start",
-      align: "end",
+      anchor: "end",
+      align: "top",
     },
   },
   borderRadius: 5,
@@ -84,8 +89,8 @@ const chartOptions = {
         color: "#ffffff",
         font: {
           family: "Clash Display",
-          weight: "400",
-          size: 16,
+          weight: "500",
+          size: 18,
         },
       },
       grid: {
