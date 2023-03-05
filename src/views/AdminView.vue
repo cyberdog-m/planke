@@ -1,21 +1,14 @@
 <script setup>
 import { ref, computed } from "vue";
-import { useRouter } from "vue-router";
 import { useContestsStore } from "../stores/contests";
 import PlusCircleIcon from "vue-material-design-icons/PlusCircle.vue";
 import EditEventsAdmin from "../components/EditEventsAdmin.vue";
 
-const router = useRouter();
 const contestsStore = useContestsStore();
 
 // 0 -> All, 1 -> Arts, 2 -> Sports, 3 -> Games
 const filterChip = ref(0);
 const searchFilter = ref("");
-
-// Open the add events page/route
-function openEventView() {
-  router.push({ name: "addevent" });
-}
 
 function filterWithChips(contest) {
   if (filterChip.value == 0) {
@@ -50,13 +43,20 @@ const contests = computed(() => {
 <template>
   <div class="w-full text-white">
     <h1 class="mt-10 text-4xl font-medium text-center">Admin Panel</h1>
-    <h2 class="mt-8 text-2xl font-medium">Events</h2>
-    <button
-      @click="openEventView"
-      class="flex items-center px-4 py-3 mx-auto mt-3 text-xl font-medium duration-200 rounded-md text-primary bg-accent hover:bg-accent/90"
-    >
-      <PlusCircleIcon class="mr-2" />Add Event
-    </button>
+    <div class="flex justify-center gap-2 mt-8">
+      <router-link
+        :to="{ name: 'addevent' }"
+        class="flex items-center px-4 py-3 text-lg font-medium duration-200 rounded-md text-primary bg-accent hover:bg-accent/90"
+      >
+        <PlusCircleIcon class="mr-2" />Add Event
+      </router-link>
+      <router-link
+        :to="{ name: 'signup' }"
+        class="flex items-center px-4 py-3 text-lg font-medium duration-200 rounded-md text-primary bg-accent hover:bg-accent/90"
+      >
+        <PlusCircleIcon class="mr-2" />Add User
+      </router-link>
+    </div>
     <h2 class="mt-8 text-xl font-medium">Search Event</h2>
     <input
       type="text"
