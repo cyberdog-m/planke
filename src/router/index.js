@@ -22,15 +22,6 @@ const router = createRouter({
       },
     },
     {
-      path: "/update/:contestId",
-      name: "update",
-      component: () => import("../views/UpdateContestView.vue"),
-      meta: {
-        requiresAuth: true,
-        title: "Update Event",
-      },
-    },
-    {
       path: "/events",
       name: "events-list",
       component: () => import("../views/EventsListView.vue"),
@@ -45,6 +36,23 @@ const router = createRouter({
       component: () => import("../views/VenueDetailsView.vue"),
       meta: {
         title: "Venue Details",
+      },
+    },
+    {
+      path: "/signin",
+      name: "signin",
+      component: () => import("../views/SignInView.vue"),
+      meta: {
+        title: "Sign In",
+      },
+    },
+    {
+      path: "/update/:contestId",
+      name: "update",
+      component: () => import("../views/UpdateContestView.vue"),
+      meta: {
+        requiresAuth: true,
+        title: "Update Event",
       },
     },
     {
@@ -85,14 +93,6 @@ const router = createRouter({
         requiresAuth: true,
         requiresAdmin: true,
         title: "Sign Up",
-      },
-    },
-    {
-      path: "/signin",
-      name: "signin",
-      component: () => import("../views/SignInView.vue"),
-      meta: {
-        title: "Sign In",
       },
     },
   ],
