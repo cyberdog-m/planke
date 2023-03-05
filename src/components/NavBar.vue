@@ -87,11 +87,6 @@ const avatarUrl = computed(() => {
               >Venue Details</RouterLink
             >
             <RouterLink
-              class="w-full px-3 py-2 transition-colors duration-100 ease-in-out rounded-md hover:bg-sechover"
-              :to="{ name: 'about' }"
-              >About</RouterLink
-            >
-            <RouterLink
               v-if="userStore.isAuthenticated"
               class="w-full px-3 py-2 transition-colors duration-100 ease-in-out rounded-md hover:bg-sechover"
               :to="{ name: 'events-list' }"
