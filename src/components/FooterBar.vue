@@ -32,7 +32,7 @@ import HeartIcon from "vue-material-design-icons/Heart.vue";
           <img
             src="../assets/malabar-logo.png"
             alt="malabar college logo"
-            class="h-12"
+            class="h-8 opacity-80"
           />
         </a>
       </div>
