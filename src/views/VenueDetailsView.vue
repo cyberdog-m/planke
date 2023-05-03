@@ -1,9 +1,10 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { supabase } from "../supabase";
 import VenueDetailsCard from "../components/VenueDetailsCard.vue";
 
 const programs = ref([]);
+const searchFilter = ref("");
 
 async function getVenueDetails() {
   try {
@@ -22,6 +23,30 @@ async function getVenueDetails() {
   }
 }
 
+function filterWithSearch(program) {
+  if (searchFilter.value.trim() != "") {
+    return (
+      program.name
+        .trim()
+        .toLowerCase()
+        .includes(searchFilter.value.trim().toLowerCase()) ||
+      program.venues.name
+        .trim()
+        .toLowerCase()
+        .includes(searchFilter.value.trim().toLowerCase()) ||
+      program.venues.location
+        .trim()
+        .toLowerCase()
+        .includes(searchFilter.value.trim().toLowerCase())
+    );
+  }
+  return true;
+}
+
+const filteredPrograms = computed(() => {
+  return programs.value.filter(filterWithSearch);
+});
+
 onMounted(() => {
   getVenueDetails();
 });
@@ -34,12 +59,13 @@ onMounted(() => {
     <input
       type="text"
       placeholder="Enter Event / Venue Name"
+      v-model="searchFilter"
       class="w-full h-10 px-3 mt-2 rounded-md outline outline-1 outline-accent bg-secondary"
     />
     <!-- Cards -->
     <div class="flex flex-col w-full gap-3 mt-4">
       <VenueDetailsCard
-        v-for="program in programs"
+        v-for="program in filteredPrograms"
         :key="program.id"
         :venue-detail="program"
       />
