@@ -63,7 +63,7 @@ onMounted(() => {
       class="w-full h-10 px-3 mt-2 rounded-md outline outline-1 outline-accent bg-secondary"
     />
     <!-- Cards -->
-    <div class="flex flex-col w-full gap-3 mt-4">
+    <div class="flex flex-col w-full gap-3 mt-4" v-auto-animate>
       <VenueDetailsCard
         v-for="program in filteredPrograms"
         :key="program.id"
