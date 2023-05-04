@@ -44,6 +44,14 @@ const router = createRouter({
       },
     },
     {
+      path: "/addvenue",
+      name: "addvenue",
+      component: () => import("../views/AddEventDetails.vue"),
+      meta: {
+        title: "Add Venue Detail",
+      },
+    },
+    {
       path: "/signin",
       name: "signin",
       component: () => import("../views/SignInView.vue"),
