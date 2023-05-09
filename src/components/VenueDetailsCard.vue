@@ -11,7 +11,7 @@ const props = defineProps({
 });
 
 const formatted_day = useDateFormat(new Date(props.venueDetail.date), "D MMM");
-const formatted_time = useDateFormat(new Date(props.venueDetail.date), "h:m");
+const formatted_time = useDateFormat(new Date(props.venueDetail.date), "h:mm");
 const formatted_meridiem = useDateFormat(new Date(props.venueDetail.date), "A");
 </script>
 <template>
