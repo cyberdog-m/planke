@@ -44,7 +44,9 @@ function filterWithSearch(program) {
 }
 
 const filteredPrograms = computed(() => {
-  return programs.value.filter(filterWithSearch);
+  return programs.value
+    .filter(filterWithSearch)
+    .sort((x, y) => (new Date(x.date) > new Date(y.date) ? 1 : -1));
 });
 
 onMounted(() => {
