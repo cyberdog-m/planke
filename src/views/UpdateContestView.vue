@@ -2,11 +2,13 @@
 import { computed, onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useContestsStore } from "../stores/contests";
+import { useUserStore } from "../stores/user";
 import { supabase } from "../supabase";
 
 const route = useRoute();
 const router = useRouter();
 const contestsStore = useContestsStore();
+const userStore = useUserStore();
 
 const first_place = ref("");
 const first_place_grp = ref("");
@@ -45,6 +47,7 @@ async function updateContest() {
         third_place_grp: third_place_grp.value,
         is_complete: is_complete.value,
         last_updated_at: new Date().toISOString(),
+        last_updated_user: userStore.user.full_name,
       })
       .eq("id", route.params.contestId);
     router.push({ name: "events-list" });
