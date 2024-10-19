@@ -7,16 +7,47 @@ import { supabase } from "../supabase";
 import AnnouncementCard from "../components/AnnouncementCard.vue";
 
 const contestsStore = useContestsStore();
+const filterChip = ref(0);
+
+const pointHeader = computed(() => {
+  if (filterChip.value == 0) {
+    return "Overall Ranking";
+  } else if (filterChip.value == 1) {
+    return "Arts Ranking";
+  } else if (filterChip.value == 2) {
+    return "Sports Ranking";
+  } else if (filterChip.value == 3) {
+    return "Games Ranking";
+  } else if (filterChip.value == 4) {
+    return "Sports & Games Ranking";
+  }
+  return "Overall Ranking";
+});
 
 // Select the completed event from the database
 function filterCompleted(contest) {
   return contest.is_complete;
 }
 
+function filterWithChips(contest) {
+  if (filterChip.value == 0) {
+    return true;
+  } else if (filterChip.value == 1) {
+    return contest.category == "arts";
+  } else if (filterChip.value == 2) {
+    return contest.category == "sports";
+  } else if (filterChip.value == 3) {
+    return contest.category == "games";
+  } else if (filterChip.value == 4) {
+    return (contest.category == "games") | (contest.category == "sports");
+  }
+}
+
 // Filter the completed events and sort by last updated date
 const completedContests = computed(() => {
   return contestsStore.contests
     .filter(filterCompleted)
+    .filter(filterWithChips)
     .sort((x, y) =>
       new Date(x.last_updated_at) > new Date(y.last_updated_at) ? -1 : 1
     );
@@ -82,9 +113,47 @@ async function getAnnouncements() {
       Arts, Sports & Games
       <span class="text-5xl font-medium">Scoreboard</span>
     </h1>
-    <h2 class="mt-10 text-4xl font-medium">Overall Ranking</h2>
+    <h2 class="mt-10 text-4xl font-medium">{{ pointHeader }}</h2>
     <!-- Chart Componenet -->
     <PointsChart :overall-scores="overallScores" class="mt-3" />
+    <!-- Filter Chips -->
+    <div class="flex items-center justify-start gap-3 mt-5">
+      <div
+        class="px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
+        :class="{ 'bg-accent/50': filterChip == 0 }"
+        @click="filterChip = 0"
+      >
+        All
+      </div>
+      <div
+        class="px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
+        :class="{ 'bg-accent/50': filterChip == 1 }"
+        @click="filterChip = 1"
+      >
+        Arts
+      </div>
+      <div
+        class="px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
+        :class="{ 'bg-accent/50': filterChip == 2 }"
+        @click="filterChip = 2"
+      >
+        Sports
+      </div>
+      <div
+        class="px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
+        :class="{ 'bg-accent/50': filterChip == 3 }"
+        @click="filterChip = 3"
+      >
+        Games
+      </div>
+      <div
+        class="px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
+        :class="{ 'bg-accent/50': filterChip == 4 }"
+        @click="filterChip = 4"
+      >
+        Sports & Games
+      </div>
+    </div>
     <h2 class="mt-10 text-4xl font-medium">Event Updates</h2>
     <div class="flex flex-col gap-4 mt-5" v-auto-animate>
       <AnnouncementCard

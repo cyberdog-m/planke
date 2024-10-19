@@ -44,7 +44,9 @@ function filterWithSearch(program) {
 }
 
 const filteredPrograms = computed(() => {
-  return programs.value.filter(filterWithSearch);
+  return programs.value
+    .filter(filterWithSearch)
+    .sort((x, y) => (new Date(x.date) > new Date(y.date) ? 1 : -1));
 });
 
 onMounted(() => {
@@ -56,19 +58,11 @@ onMounted(() => {
   <div class="text-white">
     <h1 class="mt-10 text-4xl font-medium text-center">Venue Details</h1>
     <h2 class="mt-8 text-xl font-medium">Search Event / Venue</h2>
-    <input
-      type="text"
-      placeholder="Enter Event / Venue Name"
-      v-model="searchFilter"
-      class="w-full h-10 px-3 mt-2 rounded-md outline outline-1 outline-accent bg-secondary"
-    />
+    <input type="text" placeholder="Enter Event / Venue Name" v-model="searchFilter"
+      class="w-full h-10 px-3 mt-2 rounded-md outline outline-1 outline-accent bg-secondary" />
     <!-- Cards -->
     <div class="flex flex-col w-full gap-3 mt-4" v-auto-animate>
-      <VenueDetailsCard
-        v-for="program in filteredPrograms"
-        :key="program.id"
-        :venue-detail="program"
-      />
+      <VenueDetailsCard v-for="program in filteredPrograms" :key="program.id" :venue-detail="program" />
     </div>
   </div>
 </template>

@@ -2,8 +2,10 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { supabase } from "../supabase";
+import { useUserStore } from "../stores/user";
 
 const router = useRouter();
+const userStore = useUserStore();
 
 const eventName = ref();
 const eventCategory = ref();
@@ -23,6 +25,7 @@ async function addNewEvent() {
       third_place_point: thirdPlacePoint.value,
       created_at: new Date().toISOString(),
       last_updated_at: new Date().toISOString(),
+      last_updated_user: userStore.user.full_name,
     });
     router.push({ name: "admin" });
     if (error) throw error;

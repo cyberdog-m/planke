@@ -108,6 +108,11 @@ const router = createRouter({
         title: "Sign Up",
       },
     },
+    {
+      path: "/temphold",
+      name: "temphold",
+      component: () => import("../views/ResultTemporaryHold.vue"),
+    },
   ],
 });
 

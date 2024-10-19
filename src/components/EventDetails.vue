@@ -25,7 +25,7 @@ const props = defineProps({
     </div>
     <!-- Winners Details -->
     <div class="flex flex-col gap-1 mt-3">
-      <div class="flex">
+      <div class="flex" v-if="props.contestDetail.first_place_grp">
         1<span class="mr-1 text-xs align-top">st</span> Place :
         <div class="flex flex-col ml-5 font-medium capitalize">
           {{ props.contestDetail.first_place }}
@@ -34,7 +34,7 @@ const props = defineProps({
           </div>
         </div>
       </div>
-      <div class="flex">
+      <div class="flex" v-if="props.contestDetail.second_place_grp">
         2<span class="mr-1 text-xs align-top">nd</span> Place :
         <div class="flex flex-col ml-3 font-medium capitalize">
           {{ props.contestDetail.second_place }}
@@ -43,7 +43,7 @@ const props = defineProps({
           </div>
         </div>
       </div>
-      <div class="flex">
+      <div class="flex" v-if="props.contestDetail.third_place_grp">
         3<span class="mr-1 text-xs align-top">rd</span> Place :
         <div class="flex flex-col ml-3 font-medium capitalize">
           {{ props.contestDetail.third_place }}
