@@ -37,7 +37,7 @@ onMounted(() => {
 async function updateContest() {
   try {
     const { error } = await supabase
-      .from("contests")
+      .from(import.meta.env.VITE_CONTESTS_DB_NAME)
       .update({
         first_place: first_place.value,
         first_place_grp: first_place_grp.value,

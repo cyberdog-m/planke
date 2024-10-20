@@ -21,7 +21,7 @@ function deleteEvent() {
 async function removeItem(item_id) {
   try {
     const { error } = await supabase
-      .from("contests")
+      .from(import.meta.env.VITE_CONTESTS_DB_NAME)
       .delete()
       .eq("id", item_id);
     if (error) throw error;

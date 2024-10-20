@@ -42,7 +42,7 @@ watchEffect(() => {
 async function updateEvent() {
   try {
     const { error } = await supabase
-      .from("contests")
+      .from(import.meta.env.VITE_CONTESTS_DB_NAME)
       .update({
         title: eventName.value,
         category: eventCategory.value,

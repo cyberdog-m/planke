@@ -16,17 +16,19 @@ const thirdPlacePoint = ref();
 
 async function addNewEvent() {
   try {
-    const { error } = await supabase.from("contests").insert({
-      title: eventName.value,
-      category: eventCategory.value,
-      type: eventType.value,
-      first_place_point: firstPlacePoint.value,
-      second_place_point: secondPlacePoint.value,
-      third_place_point: thirdPlacePoint.value,
-      created_at: new Date().toISOString(),
-      last_updated_at: new Date().toISOString(),
-      last_updated_user: userStore.user.full_name,
-    });
+    const { error } = await supabase
+      .from(import.meta.env.VITE_CONTESTS_DB_NAME)
+      .insert({
+        title: eventName.value,
+        category: eventCategory.value,
+        type: eventType.value,
+        first_place_point: firstPlacePoint.value,
+        second_place_point: secondPlacePoint.value,
+        third_place_point: thirdPlacePoint.value,
+        created_at: new Date().toISOString(),
+        last_updated_at: new Date().toISOString(),
+        last_updated_user: userStore.user.full_name,
+      });
     router.push({ name: "admin" });
     if (error) throw error;
   } catch (error) {

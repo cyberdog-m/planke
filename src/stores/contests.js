@@ -10,7 +10,9 @@ export const useContestsStore = defineStore("contests", () => {
   async function getSupabaseData() {
     isLoading.value = true;
     try {
-      const { data, error } = await supabase.from("contests2425").select(); // Update the contests db name
+      const { data, error } = await supabase
+        .from(import.meta.env.VITE_CONTESTS_DB_NAME)
+        .select(); // Update the contests db name
 
       if (data) {
         data.forEach((data) => {
