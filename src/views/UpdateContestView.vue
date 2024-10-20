@@ -4,6 +4,7 @@ import { useRoute, useRouter } from "vue-router";
 import { useContestsStore } from "../stores/contests";
 import { useUserStore } from "../stores/user";
 import { supabase } from "../supabase";
+import { associationsList } from "../utils/associations";
 
 const route = useRoute();
 const router = useRouter();
@@ -87,9 +88,13 @@ async function updateContest() {
           class="w-full h-10 px-3 mt-1 mb-2 rounded-md outline outline-1 outline-accent bg-secondary"
         >
           <option selected disabled>Select an Association</option>
-          <option value="scam">SCAM</option>
-          <option value="mace">MACE</option>
-          <option value="element">ELEMENT</option>
+          <option
+            v-for="association in associationsList"
+            :key="association.value"
+            :value="association.value"
+          >
+            {{ association.name }}
+          </option>
           <option value="">None</option>
         </select>
       </div>
@@ -116,9 +121,13 @@ async function updateContest() {
           class="w-full h-10 px-3 mt-1 mb-2 rounded-md outline outline-1 outline-accent bg-secondary"
         >
           <option selected disabled>Select an Association</option>
-          <option value="scam">SCAM</option>
-          <option value="mace">MACE</option>
-          <option value="element">ELEMENT</option>
+          <option
+            v-for="association in associationsList"
+            :key="association.value"
+            :value="association.value"
+          >
+            {{ association.name }}
+          </option>
           <option value="">None</option>
         </select>
       </div>
@@ -145,9 +154,13 @@ async function updateContest() {
           class="w-full h-10 px-3 mt-1 mb-2 rounded-md outline outline-1 outline-accent bg-secondary"
         >
           <option selected disabled>Select an Association</option>
-          <option value="scam">SCAM</option>
-          <option value="mace">MACE</option>
-          <option value="element">ELEMENT</option>
+          <option
+            v-for="association in associationsList"
+            :key="association.value"
+            :value="association.value"
+          >
+            {{ association.name }}
+          </option>
           <option value="">None</option>
         </select>
       </div>

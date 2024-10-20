@@ -3,6 +3,7 @@ import PointsChart from "../components/PointsChart.vue";
 import EventDetails from "../components/EventDetails.vue";
 import { useContestsStore } from "../stores/contests";
 import { ref, computed } from "vue";
+import { associationsList } from "../utils/associations";
 
 const contestsStore = useContestsStore();
 const filterChip = ref(0);
@@ -53,11 +54,10 @@ const completedContests = computed(() => {
 
 // Calculate the overall score of completed contests
 const overallScores = computed(() => {
-  let scores = {
-    scam: 0,
-    mace: 0,
-    element: 0,
-  };
+  let scores = {};
+  associationsList.forEach((association) => {
+    scores[association.value] = 0;
+  });
   completedContests.value.forEach((contest) => {
     if (
       Number.isInteger(contest.first_place_point) &&

@@ -11,6 +11,7 @@ import {
 } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { computed } from "vue";
+import { associationsList } from "../utils/associations";
 
 ChartJS.register(
   Title,
@@ -28,7 +29,11 @@ const props = defineProps({
 
 const chartData = computed(() => {
   return {
-    labels: Object.keys(props.overallScores).map((name) => name.toUpperCase()),
+    labels: Object.keys(props.overallScores).map(
+      (value) =>
+        associationsList.find((association) => association.value === value)
+          ?.name
+    ),
     datasets: [{ data: Object.values(props.overallScores) }],
   };
 });
