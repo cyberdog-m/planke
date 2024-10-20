@@ -51,29 +51,29 @@ const contests = computed(() => {
     <!-- Filter Chips -->
     <div class="flex items-center justify-start gap-3 mt-5">
       <div
-        class="px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
-        :class="{ 'bg-accent/50': filterChip == 0 }"
+        class="px-4 py-1 transition border-2 rounded-full cursor-pointer border-accent"
+        :class="[filterChip == 0 ? 'bg-accent/50' : 'bg-secondary']"
         @click="filterChip = 0"
       >
         All
       </div>
       <div
-        class="px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
-        :class="{ 'bg-accent/50': filterChip == 1 }"
+        class="px-4 py-1 transition border-2 rounded-full cursor-pointer border-accent"
+        :class="[filterChip == 1 ? 'bg-accent/50' : 'bg-secondary']"
         @click="filterChip = 1"
       >
         Arts
       </div>
       <div
-        class="px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
-        :class="{ 'bg-accent/50': filterChip == 2 }"
+        class="px-4 py-1 transition border-2 rounded-full cursor-pointer border-accent"
+        :class="[filterChip == 2 ? 'bg-accent/50' : 'bg-secondary']"
         @click="filterChip = 2"
       >
         Sports
       </div>
       <div
-        class="px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
-        :class="{ 'bg-accent/50': filterChip == 3 }"
+        class="px-4 py-1 transition border-2 rounded-full cursor-pointer border-accent"
+        :class="[filterChip == 3 ? 'bg-accent/50' : 'bg-secondary']"
         @click="filterChip = 3"
       >
         Games
