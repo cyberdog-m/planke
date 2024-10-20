@@ -117,38 +117,40 @@ async function getAnnouncements() {
     <!-- Chart Componenet -->
     <PointsChart :overall-scores="overallScores" class="mt-3" />
     <!-- Filter Chips -->
-    <div class="flex items-center justify-start gap-3 mt-5">
+    <div
+      class="grid items-center justify-center grid-cols-3 gap-3 mt-5 text-center"
+    >
       <div
         class="px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
-        :class="{ 'bg-accent/50': filterChip == 0 }"
+        :class="{ 'bg-purple-700': filterChip == 0 }"
         @click="filterChip = 0"
       >
         All
       </div>
       <div
         class="px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
-        :class="{ 'bg-accent/50': filterChip == 1 }"
+        :class="{ 'bg-purple-700': filterChip == 1 }"
         @click="filterChip = 1"
       >
         Arts
       </div>
       <div
         class="px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
-        :class="{ 'bg-accent/50': filterChip == 2 }"
+        :class="{ 'bg-purple-700': filterChip == 2 }"
         @click="filterChip = 2"
       >
         Sports
       </div>
       <div
         class="px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
-        :class="{ 'bg-accent/50': filterChip == 3 }"
+        :class="{ 'bg-purple-700': filterChip == 3 }"
         @click="filterChip = 3"
       >
         Games
       </div>
       <div
-        class="px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
-        :class="{ 'bg-accent/50': filterChip == 4 }"
+        class="col-span-2 px-4 py-1 transition border-2 rounded-full cursor-pointer bg-secondary border-accent"
+        :class="{ 'bg-purple-700': filterChip == 4 }"
         @click="filterChip = 4"
       >
         Sports & Games
