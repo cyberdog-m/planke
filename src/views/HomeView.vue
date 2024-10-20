@@ -3,8 +3,6 @@ import PointsChart from "../components/PointsChart.vue";
 import EventDetails from "../components/EventDetails.vue";
 import { useContestsStore } from "../stores/contests";
 import { ref, computed } from "vue";
-import { supabase } from "../supabase";
-import AnnouncementCard from "../components/AnnouncementCard.vue";
 
 const contestsStore = useContestsStore();
 const filterChip = ref(0);
@@ -86,25 +84,25 @@ const overallScores = computed(() => {
   return scores;
 });
 
-//Get Announcements
-const announcements = ref([]);
-getAnnouncements();
+// //Get Announcements
+// const announcements = ref([]);
+// getAnnouncements();
 
-async function getAnnouncements() {
-  try {
-    const { data, error } = await supabase.from("announcements").select();
-    if (data) {
-      data.forEach((data) => {
-        if (data.display) {
-          announcements.value.push(data);
-        }
-      });
-    }
-    if (error) throw error;
-  } catch (error) {
-    console.warn(error.message);
-  }
-}
+// async function getAnnouncements() {
+//   try {
+//     const { data, error } = await supabase.from("announcements").select();
+//     if (data) {
+//       data.forEach((data) => {
+//         if (data.display) {
+//           announcements.value.push(data);
+//         }
+//       });
+//     }
+//     if (error) throw error;
+//   } catch (error) {
+//     console.warn(error.message);
+//   }
+// }
 </script>
 
 <template>
@@ -158,13 +156,13 @@ async function getAnnouncements() {
     </div>
     <h2 class="mt-10 text-4xl font-medium">Event Updates</h2>
     <div class="flex flex-col gap-4 mt-5" v-auto-animate>
-      <AnnouncementCard
+      <!-- <AnnouncementCard
         v-for="announcement in announcements.sort((x, y) =>
           new Date(x.updated_at) > new Date(y.updated_at) ? -1 : 1
         )"
         :key="announcement.id"
         :announcement-detail="announcement"
-      />
+      /> -->
       <EventDetails
         v-for="contest in completedContests"
         :key="contest.id"
