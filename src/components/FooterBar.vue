@@ -1,14 +1,18 @@
 <script setup>
 import HeartIcon from "vue-material-design-icons/Heart.vue";
+const appVersion = VITE_APP_VERSION;
+console.log(appVersion);
 </script>
 <template>
   <div class="w-full text-white min-h-[10rem] bg-footer">
     <div class="max-w-md px-5 pt-5 mx-auto">
       <div class="flex items-center justify-between">
         <div class="flex flex-col">
-          <router-link :to="{ name: 'about' }"
-            >About
-            <span class="font-medium text-accent">Planke</span></router-link
+          <router-link
+            :to="{ name: 'about' }"
+            class="cursor-pointer hover:underline hover:underline-offset-2 decoration-accent"
+            >About <span class="font-medium text-accent">Planke</span
+            ><span class="ml-2 opacity-60">v{{ appVersion }}</span></router-link
           >
           <p class="mt-4 opacity-60">Follow Us</p>
           <div class="flex items-center gap-3 mt-2 opacity-80">
