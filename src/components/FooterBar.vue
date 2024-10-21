@@ -15,17 +15,17 @@ console.log(appVersion);
             ><span class="ml-2 opacity-60">v{{ appVersion }}</span></router-link
           >
           <p class="mt-4 opacity-60">Follow Us</p>
-          <div class="flex items-center gap-3 mt-2 opacity-80">
+          <div class="flex items-center gap-3 mt-2">
             <a href="https://instagram.com/element_mcet">
               <img
-                class="h-8"
+                class="h-8 duration-100 hover:opacity-100 opacity-80"
                 src="../assets/element-logo.png"
                 alt="Element Association Logo"
               />
             </a>
             <a href="https://instagram.com/mcetians">
               <img
-                class="h-6"
+                class="h-6 duration-100 opacity-80 hover:opacity-100"
                 src="../assets/union-logo.png"
                 alt="Malabar Union Logo"
               />
@@ -36,7 +36,7 @@ console.log(appVersion);
           <img
             src="../assets/malabar-logo.png"
             alt="malabar college logo"
-            class="h-8 opacity-80"
+            class="h-8 duration-100 opacity-80 hover:opacity-100"
           />
         </a>
       </div>
